@@ -12,6 +12,7 @@ public class Utils
     {
         static Scanner scanner = new Scanner(System.in);
         static int choice = 0;
+        static List<Vehicle> testVehicleList = new LinkedList<>();
 
         /*public Menu()
         {
@@ -69,7 +70,15 @@ public class Utils
                             System.out.println("Expdate : " + expDate);
                             String samplePlate = "ABC-1234";
                             Vehicle testVehicle = new Vehicle(samplePlate, expDate);
-                            testVehicle.ExpirationCheck(samplePlate, dateToBeChecked);
+                            if (testVehicle.ExpirationCheck(samplePlate, dateToBeChecked) == true)
+                            {
+                                Owner testOwner = new Owner("Bill", "Vrouliotis", 2567);
+                                testVehicleList.add(testVehicle);
+                            }
+                            for (Vehicle aVehicle : testVehicleList)
+                            {
+                                System.out.println(aVehicle.getPlate());
+                            }
                         }
                         catch (java.text.ParseException e)
                         {
