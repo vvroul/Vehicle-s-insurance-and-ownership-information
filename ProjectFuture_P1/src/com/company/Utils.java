@@ -40,7 +40,7 @@ public class Utils
         {
             do {
                 System.out.println("---Select functionality to perform---");
-                System.out.println("*1 Vehicle Insurance Status");
+                System.out.println("*1 com.company.Vehicle Insurance Status");
                 System.out.println("*2 Forecoming Expiries");
                 System.out.println("*3 Expiries by plate");
                 System.out.println("*4 Quit");
@@ -57,6 +57,8 @@ public class Utils
                         Scanner daysScanner = new Scanner(System.in);
                         numOfDays = daysScanner.nextInt();
                         System.out.println("The number of days is : " + numOfDays);
+                        Date dateToBeChecked = DaysToDate(numOfDays);
+                        System.out.println(dateToBeChecked);
                         subMenu();
                         break;
                     case 3:
