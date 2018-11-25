@@ -51,6 +51,12 @@ public class Utils
 
                         break;
                     case 2:
+                        //User will provide the number of days for the timeframe
+                        int numOfDays;
+                        System.out.println("Please provide the number of days : ");
+                        Scanner daysScanner = new Scanner(System.in);
+                        numOfDays = daysScanner.nextInt();
+                        System.out.println("The number of days is : " + numOfDays);
                         subMenu();
                         break;
                     case 3:
