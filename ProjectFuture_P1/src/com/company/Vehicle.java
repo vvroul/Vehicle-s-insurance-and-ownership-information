@@ -73,6 +73,16 @@ public class Vehicle
     {
         System.out.println("In the expiration check for F2");
         System.out.println("Plate : " + plate + "  Expiration Date : " + ins_end + "  DateToBeChecked : " + dateToCheck);
+        if(dateToCheck.compareTo(ins_end)>0)
+        {
+            System.out.println("Expired insurance");
+        }
+        else if(dateToCheck.compareTo(ins_end)<0)
+        {
+            System.out.println("Active insurance");
+        }
+        else {
+            System.out.println("Last day of insurance, don't add to list");
+        }
     }
-
 }

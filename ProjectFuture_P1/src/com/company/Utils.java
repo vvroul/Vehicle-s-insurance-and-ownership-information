@@ -62,7 +62,7 @@ public class Utils
                         Date dateToBeChecked = DaysToDate(numOfDays);
                         System.out.println(dateToBeChecked);
 
-                        String date="Mon Nov 26 12:53:10 EET 2018";
+                        String date="Mon Dec 01 12:53:10 EET 2018";
                         try {
                             SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
                             Date expDate = sdf.parse(date);
