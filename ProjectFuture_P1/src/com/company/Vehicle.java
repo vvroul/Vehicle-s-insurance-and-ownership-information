@@ -10,6 +10,12 @@ public class Vehicle
     private Date ins_start;
     private Date ins_end;
 
+    public Vehicle(String plate, Date ins_end) {
+        this.plate = plate;
+        this.ins_end = ins_end;
+        System.out.println("Vehicle object initialized!");
+    }
+
     public Vehicle(String plate) {
         this.plate = plate;
     }
@@ -66,6 +72,7 @@ public class Vehicle
     public void ExpirationCheck(String plate, Date dateToCheck)
     {
         System.out.println("In the expiration check for F2");
+        System.out.println("Plate : " + plate + "  Expiration Date : " + ins_end + "  DateToBeChecked : " + dateToCheck);
     }
 
 }

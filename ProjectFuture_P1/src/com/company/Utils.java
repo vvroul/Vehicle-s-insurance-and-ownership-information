@@ -1,8 +1,10 @@
 package com.company;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.*;
 import java.util.Scanner;
+import java.text.*;
 
 public class Utils
 {
@@ -59,6 +61,20 @@ public class Utils
                         System.out.println("The number of days is : " + numOfDays);
                         Date dateToBeChecked = DaysToDate(numOfDays);
                         System.out.println(dateToBeChecked);
+
+                        String date="Mon Nov 26 12:53:10 EET 2018";
+                        try {
+                            SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+                            Date expDate = sdf.parse(date);
+                            System.out.println("Expdate : " + expDate);
+                            String samplePlate = "ABC-1234";
+                            Vehicle testVehicle = new Vehicle(samplePlate, expDate);
+                            testVehicle.ExpirationCheck(samplePlate, dateToBeChecked);
+                        }
+                        catch (java.text.ParseException e)
+                        {
+                            e.printStackTrace();
+                        }
                         subMenu();
                         break;
                     case 3:
