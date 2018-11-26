@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.*;
@@ -63,6 +64,7 @@ public class Utils
                         Date dateToBeChecked = DaysToDate(numOfDays);
                         System.out.println(dateToBeChecked);
 
+                        //here will come a loop in a result set instead of us giving just values
                         String date="Mon Dec 01 12:53:10 EET 2018";
                         try {
                             SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
@@ -74,10 +76,6 @@ public class Utils
                             {
                                 Owner testOwner = new Owner("Bill", "Vrouliotis", 2567);
                                 testVehicleList.add(testVehicle);
-                            }
-                            for (Vehicle aVehicle : testVehicleList)
-                            {
-                                System.out.println(aVehicle.getPlate());
                             }
                         }
                         catch (java.text.ParseException e)
@@ -121,8 +119,10 @@ public class Utils
 
             switch (evaluateInput(1, 2)) {
                 case 1:
+                    ExportToFile(choice);
                     break;
                 case 2:
+                    ExportToConsole(choice);
                     break;
                 default:
                     break;
@@ -155,6 +155,40 @@ public class Utils
         {
             System.out.println("Plate match not found");
             return false;
+        }
+    }
+
+    public static void ExportToFile(int opChoice)
+    {
+        if (opChoice == 2)
+        {
+            System.out.println("Please enter a name for the file : ");
+            Scanner scanner = new Scanner(System.in);
+            String fileName = scanner.nextLine();
+            System.out.println("Filename : " + fileName);
+            try {
+                PrintWriter writer = new PrintWriter(fileName);
+                for (Vehicle aVehicle : Menu.testVehicleList)
+                {
+                    writer.println(aVehicle.getPlate());
+                }
+                writer.close();
+            }
+            catch (java.io.FileNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void ExportToConsole(int opChoice)
+    {
+        if (opChoice == 2)
+        {
+            for (Vehicle aVehicle : Menu.testVehicleList)
+            {
+                System.out.println(aVehicle.getPlate());
+            }
         }
     }
 }
