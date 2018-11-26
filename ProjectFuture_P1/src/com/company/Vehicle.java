@@ -13,7 +13,6 @@ public class Vehicle
     public Vehicle(String plate, Date ins_end) {
         this.plate = plate;
         this.ins_end = ins_end;
-        System.out.println("Vehicle object initialized!");
     }
 
     public Vehicle(String plate) {
@@ -71,8 +70,8 @@ public class Vehicle
 
     public boolean ExpirationCheck(String plate, Date dateToCheck)
     {
-        System.out.println("In the expiration check for F2");
-        System.out.println("Plate : " + plate + "  Expiration Date : " + ins_end + "  DateToBeChecked : " + dateToCheck);
+        //System.out.println("In the expiration check for F2");
+        //System.out.println("Plate : " + plate + "  Expiration Date : " + ins_end + "  DateToBeChecked : " + dateToCheck);
         if(dateToCheck.compareTo(ins_end)>0)
         {
             System.out.println("Expired insurance");

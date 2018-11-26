@@ -5,11 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.*;
 import java.util.Scanner;
-import java.text.*;
 
 public class Utils
 {
-    public static  class Menu
+    static  class Menu
     {
         static Scanner scanner = new Scanner(System.in);
         static int choice = 0;
@@ -20,27 +19,7 @@ public class Utils
 
         }*/
 
-        //We might need those
-        public static Scanner getScanner()
-        {
-            return scanner;
-        }
-
-        public static void setScanner(Scanner scanner)
-        {
-            Menu.scanner = scanner;
-        }
-
-        public static int getChoice() {
-            return choice;
-        }
-
-        public static void setChoice(int choice)
-        {
-            Menu.choice = choice;
-        }
-
-        public static void display()
+        static void display()
         {
             do {
                 System.out.println("---Select functionality to perform---");
@@ -55,33 +34,7 @@ public class Utils
 
                         break;
                     case 2:
-                        //User will provide the number of days for the timeframe
-                        int numOfDays;
-                        System.out.println("Please provide the number of days : ");
-                        Scanner daysScanner = new Scanner(System.in);
-                        numOfDays = daysScanner.nextInt();
-                        System.out.println("The number of days is : " + numOfDays);
-                        Date dateToBeChecked = DaysToDate(numOfDays);
-                        System.out.println(dateToBeChecked);
-
-                        //here will come a loop in a result set instead of us giving just values
-                        String date="Mon Dec 01 12:53:10 EET 2018";
-                        try {
-                            SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-                            Date expDate = sdf.parse(date);
-                            System.out.println("Expdate : " + expDate);
-                            String samplePlate = "ABC-1234";
-                            Vehicle testVehicle = new Vehicle(samplePlate, expDate);
-                            if (testVehicle.ExpirationCheck(samplePlate, dateToBeChecked) == true)
-                            {
-                                Owner testOwner = new Owner("Bill", "Vrouliotis", 2567);
-                                testVehicleList.add(testVehicle);
-                            }
-                        }
-                        catch (java.text.ParseException e)
-                        {
-                            e.printStackTrace();
-                        }
+                        Operations.F2Operation();
                         subMenu();
                         break;
                     case 3:
@@ -94,7 +47,7 @@ public class Utils
             } while (choice != 4);
         }
 
-        public static int evaluateInput(int min, int max)
+        static int evaluateInput(int min, int max)
         {
             int input = scanner.nextInt();
             while ((input < min) || (input > max))
@@ -109,7 +62,7 @@ public class Utils
             return input;
         }
 
-        public static void subMenu()
+        static void subMenu()
         {
 
             System.out.println("---Enter export format--");
@@ -131,7 +84,7 @@ public class Utils
     }
 
     //Given a number of days, return the corresponding Date
-    public static Date DaysToDate(int numberOfDays)
+    static Date DaysToDate(int numberOfDays)
     {
         Date myDate = new Date();
         Calendar cal = Calendar.getInstance();
@@ -148,7 +101,12 @@ public class Utils
         Matcher matcher = pattern.matcher(toBeChecked);
         if (matcher.find())
         {
-            System.out.println(matcher.group(0)); //prints /{item}/
+            String upTo3Characters = toBeChecked.substring(0, Math.min(toBeChecked.length(), 3)).toUpperCase();
+            String rest = toBeChecked.substring(upTo3Characters.length(), Math.min(toBeChecked.length(), toBeChecked.length()));
+            String upperCaseString = upTo3Characters + rest;
+            System.out.println(upTo3Characters);
+            System.out.println(upperCaseString);
+            //System.out.println(matcher.group(0)); //prints /{item}/
             return true;
         }
         else
@@ -158,7 +116,7 @@ public class Utils
         }
     }
 
-    public static void ExportToFile(int opChoice)
+    private static void ExportToFile(int opChoice)
     {
         if (opChoice == 2)
         {
@@ -181,7 +139,7 @@ public class Utils
         }
     }
 
-    public static void ExportToConsole(int opChoice)
+    private static void ExportToConsole(int opChoice)
     {
         if (opChoice == 2)
         {
