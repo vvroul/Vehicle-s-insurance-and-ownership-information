@@ -10,13 +10,10 @@ public class Vehicle implements Comparable<Vehicle>
     private Date ins_start;
     private Date ins_end;
 
-    public Vehicle(String plate, Date ins_end) {
+    Vehicle(String plate, Date ins_end)
+    {
         this.plate = plate;
         this.ins_end = ins_end;
-    }
-
-    public Vehicle(String plate) {
-        this.plate = plate;
     }
 
     public Vehicle(String vehicleName, int ownerID, String plate, Date ins_start, Date ins_end) {
@@ -43,7 +40,7 @@ public class Vehicle implements Comparable<Vehicle>
         this.ownerID = ownerID;
     }
 
-    public String getPlate() {
+    String getPlate() {
         return plate;
     }
 
@@ -68,27 +65,28 @@ public class Vehicle implements Comparable<Vehicle>
     }
 
 
-    public boolean ExpirationCheck(String plate, Date dateToCheck)
+    boolean ExpirationCheck(Date dateToCheck)
     {
         if(dateToCheck.compareTo(ins_end)>0)
         {
-            //System.out.println("Expired insurance");
+            //Expired insurance
             return true;
         }
         else if(dateToCheck.compareTo(ins_end)<0)
         {
-            //System.out.println("Active insurance");
+            //Active insurance
             return false;
         }
-        else {
-            //not quiet possible
-            System.out.println("Last day of insurance, don't add to list");
+        else
+        {
+            //Not quiet possible (active at the last day)
             return false;
         }
     }
 
     @Override
-    public int compareTo(Vehicle v) {
+    public int compareTo(Vehicle v)
+    {
         return plate.compareTo(v.plate);
     }
 }

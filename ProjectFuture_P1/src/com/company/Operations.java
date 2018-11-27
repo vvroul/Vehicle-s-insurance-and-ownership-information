@@ -6,7 +6,7 @@ import java.util.*;
 public class Operations
 {
 
-    public static void F1Operation()
+    static void F1Operation()
     {
 
     }
@@ -18,7 +18,6 @@ public class Operations
         System.out.println("Please provide the number of days : ");
         Scanner daysScanner = new Scanner(System.in);
         numOfDays = daysScanner.nextInt();
-        //System.out.println("The number of days is : " + numOfDays);
         Date dateToBeChecked = Utils.DaysToDate(numOfDays);
 
         //Here will be added a loop in a result set instead of us giving just values
@@ -29,9 +28,8 @@ public class Operations
             Date expDate = sdf.parse(date);
             String samplePlate = "ABC-1234";
             Vehicle testVehicle = new Vehicle(samplePlate, expDate);
-            if (testVehicle.ExpirationCheck(samplePlate, dateToBeChecked))
+            if (testVehicle.ExpirationCheck(dateToBeChecked))
             {
-                //Owner testOwner = new Owner("Bill", "Vrouliotis", 2567);
                 Utils.Menu.testVehicleList.add(testVehicle);
             }
         }
@@ -41,7 +39,7 @@ public class Operations
         }
     }
 
-    public static void F3Operation()
+    static void F3Operation()
     {
         String date="Sun Nov 25 12:53:10 EET 2018";
         String[] samplePlate = { "JBC-1234", "SBA-1234", "FAC-1234", "-D234", "XBC-1234", "EBC-1234", "KBC-1234", "BBC-1234", "NBC-1234", "ABC-1234"};
@@ -54,9 +52,8 @@ public class Operations
                 Date expDate = sdf.parse(date);
                 Vehicle testVehicle = new Vehicle(samplePlate[i], expDate);
                 //for every vehicle, make the expiration check with the date now
-                if (testVehicle.ExpirationCheck(samplePlate[i], new Date()))
+                if (testVehicle.ExpirationCheck(new Date()))
                 {
-                    //Owner testOwner = new Owner("Bill", "Vrouliotis", 2567);
                     //if true add it to the expiredList
                     Utils.Menu.testExpiredList.add(testVehicle);
                 }

@@ -8,6 +8,7 @@ public class Main
         Utils.Menu.display();
         //Uncomment these lines to check the functionality of the methods
         //System.out.println(Utils.DaysToDate(10));
-        //Utils.PatternCheck("Pka-5139");
+        //String myPLate = "Pka-5139";
+        //Utils.PatternCheck(myPLate.toUpperCase());
     }
 }

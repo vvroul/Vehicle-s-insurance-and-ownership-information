@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.*;
 import java.util.Scanner;
@@ -14,11 +13,6 @@ public class Utils
         static int choice = 0;
         static List<Vehicle> testVehicleList = new LinkedList<>();
         static List<Vehicle> testExpiredList = new LinkedList<>();
-
-        /*public Menu()
-        {
-
-        }*/
 
         static void display()
         {
@@ -48,24 +42,22 @@ public class Utils
             } while (choice != 4);
         }
 
-        static int evaluateInput(int min, int max)
+        static int evaluateInput (int min,int max)
         {
-            int input = scanner.nextInt();
-            while ((input < min) || (input > max))
+            int input;
+            do
             {
+                input = validateInt();
                 if (input > max)
                 {
                     return input;
                 }
-                System.out.println("Try again");
-                input = scanner.nextInt();
-            }
+            }while((input<min)||(input>max));
             return input;
         }
 
         static void subMenu()
         {
-
             System.out.println("---Enter export format--");
             System.out.println("*1 File");
             System.out.println("*2 Console");
@@ -73,14 +65,29 @@ public class Utils
 
             switch (evaluateInput(1, 2)) {
                 case 1:
-                    ExportToFile(choice);
+                    ExportToFile();
                     break;
                 case 2:
-                    ExportToConsole(choice);
+                    ExportToConsole();
                     break;
                 default:
                     break;
             }
+        }
+
+        static int validateInt()
+        {
+            int input=0;
+            try {
+                while(!scanner.hasNextInt()){
+                    scanner.next();
+                    System.out.println("Please enter a number");
+                }
+                input = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Please enter a number");
+            }
+            return input;
         }
     }
 
@@ -102,12 +109,6 @@ public class Utils
         Matcher matcher = pattern.matcher(toBeChecked);
         if (matcher.find())
         {
-            String upTo3Characters = toBeChecked.substring(0, Math.min(toBeChecked.length(), 3)).toUpperCase();
-            String rest = toBeChecked.substring(upTo3Characters.length(), Math.min(toBeChecked.length(), toBeChecked.length()));
-            String upperCaseString = upTo3Characters + rest;
-            System.out.println(upTo3Characters);
-            System.out.println(upperCaseString);
-            //System.out.println(matcher.group(0)); //prints /{item}/
             return true;
         }
         else
@@ -117,38 +118,33 @@ public class Utils
         }
     }
 
-    private static void ExportToFile(int opChoice)
+    //Export info to file
+    private static void ExportToFile()
     {
-        if (opChoice == 2)
+        System.out.println("Please enter a name for the file : ");
+        Scanner scanner = new Scanner(System.in);
+        String fileName = scanner.nextLine();
+        try
         {
-            System.out.println("Please enter a name for the file : ");
-            Scanner scanner = new Scanner(System.in);
-            String fileName = scanner.nextLine();
-            System.out.println("Filename : " + fileName);
-            try {
-                PrintWriter writer = new PrintWriter(fileName);
-                for (Vehicle aVehicle : Menu.testVehicleList)
-                {
-                    writer.println(aVehicle.getPlate());
-                }
-                writer.close();
-            }
-            catch (java.io.FileNotFoundException e)
+            PrintWriter writer = new PrintWriter(fileName);
+            for (Vehicle aVehicle : Menu.testVehicleList)
             {
-                e.printStackTrace();
+                writer.println(aVehicle.getPlate());
             }
+            writer.close();
+        }
+        catch (java.io.FileNotFoundException e)
+        {
+            e.printStackTrace();
         }
     }
 
-    private static void ExportToConsole(int opChoice)
+    //Export info to console
+    private static void ExportToConsole()
     {
-        if (opChoice == 2)
+        for (Vehicle aVehicle : Menu.testVehicleList)
         {
-            for (Vehicle aVehicle : Menu.testVehicleList)
-            {
-                System.out.println(aVehicle.getPlate());
-            }
+            System.out.println(aVehicle.getPlate());
         }
     }
 }
-
