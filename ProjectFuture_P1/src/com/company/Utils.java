@@ -13,6 +13,7 @@ public class Utils
         static Scanner scanner = new Scanner(System.in);
         static int choice = 0;
         static List<Vehicle> testVehicleList = new LinkedList<>();
+        static List<Vehicle> testExpiredList = new LinkedList<>();
 
         /*public Menu()
         {
@@ -31,14 +32,14 @@ public class Utils
                 choice = evaluateInput(1, 3);
                 switch (choice) {
                     case 1:
-
+                        Operations.F1Operation();
                         break;
                     case 2:
                         Operations.F2Operation();
                         subMenu();
                         break;
                     case 3:
-
+                        Operations.F3Operation();
                         break;
                     default:
                         break;

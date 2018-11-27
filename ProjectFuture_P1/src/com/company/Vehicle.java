@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.*;
 
-public class Vehicle
+public class Vehicle implements Comparable<Vehicle>
 {
     private String vehicleName;
     private int ownerID;
@@ -70,16 +70,14 @@ public class Vehicle
 
     public boolean ExpirationCheck(String plate, Date dateToCheck)
     {
-        //System.out.println("In the expiration check for F2");
-        //System.out.println("Plate : " + plate + "  Expiration Date : " + ins_end + "  DateToBeChecked : " + dateToCheck);
         if(dateToCheck.compareTo(ins_end)>0)
         {
-            System.out.println("Expired insurance");
+            //System.out.println("Expired insurance");
             return true;
         }
         else if(dateToCheck.compareTo(ins_end)<0)
         {
-            System.out.println("Active insurance");
+            //System.out.println("Active insurance");
             return false;
         }
         else {
@@ -87,5 +85,10 @@ public class Vehicle
             System.out.println("Last day of insurance, don't add to list");
             return false;
         }
+    }
+
+    @Override
+    public int compareTo(Vehicle v) {
+        return plate.compareTo(v.plate);
     }
 }
