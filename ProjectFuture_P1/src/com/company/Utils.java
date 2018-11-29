@@ -147,4 +147,14 @@ public class Utils
             System.out.println(aVehicle.getPlate());
         }
     }
+
+    public static String validatePlate(){
+        String plate;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Give Plate to be checked (ex. ABC-1234): ");
+        do {
+            plate = scanner.nextLine().toUpperCase();
+        }while(!PatternCheck(plate));
+        return plate;
+    }
 }

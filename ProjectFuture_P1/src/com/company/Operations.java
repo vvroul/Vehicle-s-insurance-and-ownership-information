@@ -8,7 +8,10 @@ public class Operations
 
     static void F1Operation()
     {
-
+        ConnectionSql.open();
+        String input = Utils.validatePlate();
+        ConnectionSql.queryPlate(input);
+        ConnectionSql.close();
     }
 
     static void F2Operation()
