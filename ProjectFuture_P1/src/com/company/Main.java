@@ -16,7 +16,7 @@ public class Main
         //System.out.println(Utils.DaysToDate(10));
         //Utils.PatternCheck("PKA-5139");
 
-        String entoli = "SELECT ID, first_name, last_name FROM owner";
+        String entoli = "SELECT owner_id as o, count(owner_id) as c FROM vehicle GROUP BY owner_id";
 
         try (Connection conn = MYSQLConnector.getConnection();
              Statement stmt = conn.createStatement();
@@ -24,9 +24,8 @@ public class Main
         {
             while (rs.next())
             {
-                System.out.println(rs.getString("ID") + "\t" +
-                                   rs.getString("first_name") + "\t" +
-                                   rs.getString("last_name"));
+                System.out.println(rs.getString("o") + "\t" +
+                                   rs.getString("c"));
 
             }
         }
