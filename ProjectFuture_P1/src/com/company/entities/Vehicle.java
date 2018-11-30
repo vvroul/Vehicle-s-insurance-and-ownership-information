@@ -1,4 +1,4 @@
-package com.company;
+package com.company.entities;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class Vehicle implements Comparable<Vehicle>
     private Date ins_start;
     private Date ins_end;
 
-    Vehicle(String plate, Date ins_end)
+    public Vehicle(String plate, Date ins_end)
     {
         this.plate = plate;
         this.ins_end = ins_end;
@@ -40,7 +40,7 @@ public class Vehicle implements Comparable<Vehicle>
         this.ownerID = ownerID;
     }
 
-    String getPlate() {
+    public String getPlate() {
         return plate;
     }
 
@@ -65,7 +65,7 @@ public class Vehicle implements Comparable<Vehicle>
     }
 
 
-    boolean ExpirationCheck(Date dateToCheck)
+    public boolean ExpirationCheck(Date dateToCheck)
     {
         if(dateToCheck.compareTo(ins_end)>0)
         {

@@ -1,4 +1,8 @@
-package com.company;
+package com.company.processing;
+
+import com.company.input.Menu;
+import com.company.repository.ConnectionSql;
+import com.company.entities.Vehicle;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -6,7 +10,7 @@ import java.util.*;
 public class Operations
 {
 
-    static void F1Operation()
+    public static void F1Operation()
     {
         ConnectionSql.open();
         String input = Utils.validatePlate();
@@ -14,7 +18,7 @@ public class Operations
         ConnectionSql.close();
     }
 
-    static void F2Operation()
+    public static void F2Operation()
     {
         //User will provide the number of days for the timeframe
         int numOfDays;
@@ -33,7 +37,7 @@ public class Operations
             Vehicle testVehicle = new Vehicle(samplePlate, expDate);
             if (testVehicle.ExpirationCheck(dateToBeChecked))
             {
-                Utils.Menu.testVehicleList.add(testVehicle);
+                Menu.MenuMethods.testVehicleList.add(testVehicle);
             }
         }
         catch (java.text.ParseException e)
@@ -42,7 +46,7 @@ public class Operations
         }
     }
 
-    static void F3Operation()
+    public static void F3Operation()
     {
         String date="Sun Nov 25 12:53:10 EET 2018";
         String[] samplePlate = { "JBC-1234", "SBA-1234", "FAC-1234", "-D234", "XBC-1234", "EBC-1234", "KBC-1234", "BBC-1234", "NBC-1234", "ABC-1234"};
@@ -58,7 +62,7 @@ public class Operations
                 if (testVehicle.ExpirationCheck(new Date()))
                 {
                     //if true add it to the expiredList
-                    Utils.Menu.testExpiredList.add(testVehicle);
+                    Menu.MenuMethods.testExpiredList.add(testVehicle);
                 }
             }
             catch (java.text.ParseException e)
@@ -67,8 +71,8 @@ public class Operations
             }
         }
 
-        Utils.Menu.testExpiredList.sort(Vehicle::compareTo);
-        for (Vehicle v :  Utils.Menu.testExpiredList)
+        Menu.MenuMethods.testExpiredList.sort(Vehicle::compareTo);
+        for (Vehicle v : Menu.MenuMethods.testExpiredList)
         {
             System.out.println(v.getPlate());
         }

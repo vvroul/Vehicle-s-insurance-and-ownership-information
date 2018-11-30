@@ -1,4 +1,4 @@
-package com.company;
+package com.company.repository;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,12 +6,12 @@ import java.sql.*;
 import java.util.Date;
 import java.util.Properties;
 
-class ConnectionSql {
+public class ConnectionSql {
 
     private static Connection connection;
 
     //Open database connection
-    static boolean open()
+    public static boolean open()
     {
         try (FileInputStream fileInputStream = new FileInputStream("StoixeiaVasis.properties"))
         {
@@ -41,7 +41,7 @@ class ConnectionSql {
 
 
     //Close database connection
-    static void close()
+    public static void close()
     {
         try
         {
@@ -58,7 +58,7 @@ class ConnectionSql {
 
 
     //Query that returns the insurance status of a given query
-    static void queryPlate(String input)
+    public static void queryPlate(String input)
     {
         if(connection==null)
         {
