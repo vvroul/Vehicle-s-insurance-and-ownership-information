@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Vehicle implements Comparable<Vehicle>
 {
-    private String vehicleName;
-    private int ownerID;
+    private int v_id;
     private String plate;
+    private int ownerID;
     private Date ins_start;
     private Date ins_end;
 
@@ -16,20 +16,20 @@ public class Vehicle implements Comparable<Vehicle>
         this.ins_end = ins_end;
     }
 
-    public Vehicle(String vehicleName, int ownerID, String plate, Date ins_start, Date ins_end) {
-        this.vehicleName = vehicleName;
+    public Vehicle(int v_id, int ownerID, String plate, Date ins_start, Date ins_end) {
+        this.v_id = v_id;
         this.ownerID = ownerID;
         this.plate = plate;
         this.ins_start = ins_start;
         this.ins_end = ins_end;
     }
 
-    public String getVehicleName() {
-        return vehicleName;
+    public int getV_id() {
+        return v_id;
     }
 
-    public void setVehicleName(String vehicleName) {
-        this.vehicleName = vehicleName;
+    public void setV_id(int v_id) {
+        this.v_id = v_id;
     }
 
     public int getOwnerID() {

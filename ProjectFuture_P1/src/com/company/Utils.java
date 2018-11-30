@@ -17,13 +17,16 @@ public class Utils
         static void display()
         {
             do {
-                System.out.println("---Select functionality to perform---");
-                System.out.println("*1 com.company.Vehicle Insurance Status");
-                System.out.println("*2 Forecoming Expiries");
-                System.out.println("*3 Expiries by plate");
-                System.out.println("*4 Quit");
-                System.out.println("Give your choice ");
-                choice = evaluateInput(1, 3);
+                System.out.println("|-----------------------------------|");
+                System.out.println("|   \tSelect Functionality\t\t|");
+                System.out.println("|-----------------------------------|");
+                System.out.println("|\t1. Vehicle Insurance Status \t|");
+                System.out.println("|\t2. Forecoming Expiries\t\t\t|");
+                System.out.println("|\t3. Expiries by plate\t\t\t|");
+                System.out.println("|\t4. Total Fine\t\t\t\t\t|");
+                System.out.println("|\t5. Quit\t\t\t\t\t\t\t|");
+                System.out.println("|-----------------------------------|");
+                choice = evaluateInput(1, 4);
                 switch (choice) {
                     case 1:
                         Operations.F1Operation();
@@ -35,11 +38,14 @@ public class Utils
                     case 3:
                         Operations.F3Operation();
                         break;
+                    case 4:
+                        //Operations.F4Operation();
+                        break;
                     default:
                         break;
                 }
 
-            } while (choice != 4);
+            } while (choice != 5);
         }
 
         static int evaluateInput (int min,int max)
@@ -58,10 +64,12 @@ public class Utils
 
         static void subMenu()
         {
-            System.out.println("---Enter export format--");
-            System.out.println("*1 File");
-            System.out.println("*2 Console");
-            System.out.println("Give your choice ");
+            System.out.println("|-----------------------------------|");
+            System.out.println("|   \tSelect Export Type\t\t\t|");
+            System.out.println("|-----------------------------------|");
+            System.out.println("|\t1. File\t\t\t\t\t\t\t|");
+            System.out.println("|\t2. Console\t\t\t\t\t\t|");
+            System.out.println("|-----------------------------------|");
 
             switch (evaluateInput(1, 2)) {
                 case 1:
@@ -151,7 +159,9 @@ public class Utils
     public static String validatePlate(){
         String plate;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Give Plate to be checked (ex. ABC-1234): ");
+        System.out.println("|-------------------------------------------------------------------|");
+        System.out.println("|\tGive desirable vehicle plate number for insurance inspection\t| ");
+        System.out.println("|-------------------------------------------------------------------|");
         do {
             plate = scanner.nextLine().toUpperCase();
         }while(!PatternCheck(plate));

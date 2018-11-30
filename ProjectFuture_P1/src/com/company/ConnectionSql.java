@@ -32,10 +32,6 @@ class ConnectionSql {
             System.out.println("SQL exception occurred. Couldn't connect to database.");
             return false;
         }
-        finally
-        {
-            System.out.println("Connected");
-        }
         return true;
     }
 
