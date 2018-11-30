@@ -1,8 +1,10 @@
 package com.company.processing;
 
 import com.company.input.Menu;
+import com.company.input.Validations;
 import com.company.repository.ConnectionSql;
 import com.company.entities.Vehicle;
+import com.company.repository.Queries;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -12,10 +14,10 @@ public class Operations
 
     public static void F1Operation()
     {
-        ConnectionSql.open();
-        String input = Utils.validatePlate();
-        ConnectionSql.queryPlate(input);
-        ConnectionSql.close();
+        ConnectionSql.ConnectionMethods.open();
+        String input = Validations.ValidationMethods.validatePlate();
+        Queries.QueriesMethods.queryPlate(input);
+        ConnectionSql.ConnectionMethods.close();
     }
 
     public static void F2Operation()
@@ -25,7 +27,7 @@ public class Operations
         System.out.println("Please provide the number of days : ");
         Scanner daysScanner = new Scanner(System.in);
         numOfDays = daysScanner.nextInt();
-        Date dateToBeChecked = Utils.DaysToDate(numOfDays);
+        Date dateToBeChecked = Utils.UtilMethods.DaysToDate(numOfDays);
 
         //Here will be added a loop in a result set instead of us giving just values
         String date="Mon Dec 01 12:53:10 EET 2018";
@@ -77,7 +79,6 @@ public class Operations
             System.out.println(v.getPlate());
         }
     }
-
 
     public static void F4Operation()
     {

@@ -16,7 +16,8 @@ public class Vehicle implements Comparable<Vehicle>
         this.ins_end = ins_end;
     }
 
-    public Vehicle(String vehicleName, int ownerID, String plate, Date ins_start, Date ins_end) {
+    public Vehicle(String vehicleName, int ownerID, String plate, Date ins_start, Date ins_end)
+    {
         this.vehicleName = vehicleName;
         this.ownerID = ownerID;
         this.plate = plate;
@@ -64,7 +65,7 @@ public class Vehicle implements Comparable<Vehicle>
         this.ins_end = ins_end;
     }
 
-
+    //Checks the insurance status of the given date
     public boolean ExpirationCheck(Date dateToCheck)
     {
         if(dateToCheck.compareTo(ins_end)>0)
@@ -85,6 +86,7 @@ public class Vehicle implements Comparable<Vehicle>
     }
 
     @Override
+    //Compare method for Vehicle class
     public int compareTo(Vehicle v)
     {
         return plate.compareTo(v.plate);

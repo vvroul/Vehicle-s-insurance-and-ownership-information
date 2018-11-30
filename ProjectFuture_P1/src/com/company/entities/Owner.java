@@ -6,7 +6,8 @@ public class Owner
     private String ownerSurname;
     private int ownerID;
 
-    public Owner(String ownerName, String ownerSurname, int ownerID) {
+    public Owner(String ownerName, String ownerSurname, int ownerID)
+    {
         this.ownerName = ownerName;
         this.ownerSurname = ownerSurname;
         this.ownerID = ownerID;
