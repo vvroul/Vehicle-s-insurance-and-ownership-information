@@ -71,7 +71,7 @@ public class Queries
                     Vehicle testVehicle = new Vehicle(thePlate, exp_date);
                     if (testVehicle.ExpirationCheck(dateToBeChecked))
                     {
-                        Menu.MenuMethods.testVehicleList.add(testVehicle);
+                        Menu.MenuMethods.goingToExpireList.add(testVehicle);
                         System.out.println("The vehicle with plate : " + thePlate + " is about to have expired insurance.");
                     }
                 }
