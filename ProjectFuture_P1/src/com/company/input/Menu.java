@@ -20,13 +20,16 @@ public class Menu
         {
             do
             {
-                System.out.println("---Select functionality to perform---");
-                System.out.println("*1 Vehicle Insurance Status");
-                System.out.println("*2 Forecoming Expires");
-                System.out.println("*3 Expires by plate");
-                System.out.println("*4 Quit");
-                System.out.println("Give your choice ");
-                choice = Validations.ValidationMethods.evaluateInput(1, 3);
+                System.out.println("|-----------------------------------|");
+                System.out.println("|   \tSelect Functionality\t\t|");
+                System.out.println("|-----------------------------------|");
+                System.out.println("|\t1. Vehicle Insurance Status \t|");
+                System.out.println("|\t2. Forecoming Expires\t\t\t|");
+                System.out.println("|\t3. Expires by plate\t\t\t|");
+                System.out.println("|\t4. Total Fine\t\t\t\t\t|");
+                System.out.println("|\t5. Quit\t\t\t\t\t\t\t|");
+                System.out.println("|-----------------------------------|");
+                choice = Validations.ValidationMethods.evaluateInput(1, 4);
                 switch (choice)
                 {
                     case 1:
@@ -39,20 +42,25 @@ public class Menu
                     case 3:
                         Operations.F3Operation();
                         break;
+                    case 4:
+                        //Operations.F4Operation();
+                        break;
                     default:
                         break;
                 }
 
-            }while (choice != 4);
+            }while (choice != 5);
         }
 
         //Asks the user for the export format
         static void subMenu()
         {
-            System.out.println("---Enter export format--");
-            System.out.println("*1 File");
-            System.out.println("*2 Console");
-            System.out.println("Give your choice ");
+            System.out.println("|-----------------------------------|");
+            System.out.println("|   \tSelect Export Type\t\t\t|");
+            System.out.println("|-----------------------------------|");
+            System.out.println("|\t1. File\t\t\t\t\t\t\t|");
+            System.out.println("|\t2. Console\t\t\t\t\t\t|");
+            System.out.println("|-----------------------------------|");
 
             switch (Validations.ValidationMethods.evaluateInput(1, 2))
             {

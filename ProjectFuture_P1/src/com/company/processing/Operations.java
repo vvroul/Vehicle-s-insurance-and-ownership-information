@@ -24,7 +24,9 @@ public class Operations
     {
         //User will provide the number of days for the timeframe
         int numOfDays;
-        System.out.println("Please provide the number of days : ");
+        System.out.println("|-------------------------------------------------------------------|");
+        System.out.println("|\tGive desirable timeframe for insurance expiration inspection\t|");
+        System.out.println("|-------------------------------------------------------------------|");
         Scanner daysScanner = new Scanner(System.in);
         numOfDays = daysScanner.nextInt();
         Date dateToBeChecked = Utils.UtilMethods.DaysToDate(numOfDays);

@@ -9,7 +9,7 @@ public class ConnectionSql
 {
     public static class ConnectionMethods
     {
-        public static Connection connection;
+        static Connection connection;
 
         //Open database connection
         public static boolean open()
@@ -33,10 +33,7 @@ public class ConnectionSql
                 System.out.println("SQL exception occurred. Couldn't connect to database.");
                 return false;
             }
-            finally
-            {
-                System.out.println("Connected");
-            }
+            //System.out.println("Connected");
             return true;
         }
 

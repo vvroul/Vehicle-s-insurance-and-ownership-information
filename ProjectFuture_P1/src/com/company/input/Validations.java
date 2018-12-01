@@ -13,7 +13,9 @@ public class Validations
         {
             String plate;
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Give Plate to be checked (ex. ABC-1234): ");
+            System.out.println("|-------------------------------------------------------------------|");
+            System.out.println("|\tGive desirable vehicle plate number for insurance inspection\t| ");
+            System.out.println("|-------------------------------------------------------------------|");
             do
             {
                 plate = scanner.nextLine().toUpperCase();
