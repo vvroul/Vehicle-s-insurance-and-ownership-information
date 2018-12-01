@@ -29,25 +29,11 @@ public class Operations
         System.out.println("|-------------------------------------------------------------------|");
         Scanner daysScanner = new Scanner(System.in);
         numOfDays = daysScanner.nextInt();
+        //Turn the given number of days to corresponding date
         Date dateToBeChecked = Utils.UtilMethods.DaysToDate(numOfDays);
-
-        //Here will be added a loop in a result set instead of us giving just values
-        String date="Mon Dec 01 12:53:10 EET 2018";
-        try
-        {
-            SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-            Date expDate = sdf.parse(date);
-            String samplePlate = "ABC-1234";
-            Vehicle testVehicle = new Vehicle(samplePlate, expDate);
-            if (testVehicle.ExpirationCheck(dateToBeChecked))
-            {
-                Menu.MenuMethods.testVehicleList.add(testVehicle);
-            }
-        }
-        catch (java.text.ParseException e)
-        {
-            e.printStackTrace();
-        }
+        ConnectionSql.ConnectionMethods.open();
+        Queries.QueriesMethods.queryF2(dateToBeChecked);
+        ConnectionSql.ConnectionMethods.close();
     }
 
     public static void F3Operation()

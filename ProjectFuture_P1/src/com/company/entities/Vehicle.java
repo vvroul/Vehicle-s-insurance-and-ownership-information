@@ -68,15 +68,11 @@ public class Vehicle implements Comparable<Vehicle>
     //Checks the insurance status of the given date
     public boolean ExpirationCheck(Date dateToCheck)
     {
-        if(dateToCheck.compareTo(ins_end)>0)
+        Date now = new Date();
+        if ((now.compareTo(ins_end) <0) && (ins_end.compareTo(dateToCheck)<0))
         {
             //Expired insurance
             return true;
-        }
-        else if(dateToCheck.compareTo(ins_end)<0)
-        {
-            //Active insurance
-            return false;
         }
         else
         {
