@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Collections;
+import java.util.*;
 
 public class Queries
 {
@@ -83,33 +83,36 @@ public class Queries
             }
         }
 
-        /*public static ArrayList<Vehicle> queryF3()
+        public static List<Vehicle> queryF3()
         {
-            if (connection == null) {
+            if (ConnectionSql.ConnectionMethods.connection == null)
+            {
                 System.out.println("There's no connection to a database");
                 return null;
             }
-
             ArrayList<Vehicle> list = new ArrayList<>();
             Date now = new Date();
-            DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
             String nowSql = formatter.format(now);
-
-            try (Statement statement = connection.createStatement();
+            try (Statement statement = ConnectionSql.ConnectionMethods.connection.createStatement();
                  ResultSet resultSet = statement.executeQuery("select plate, ins_date_end from vehicle where " +
-                         "'" + nowSql + "' > ins_date_end or ins_date_end is null ")) {
-                while (resultSet.next()) {
+                         "'" + nowSql + "' > ins_date_end or ins_date_end is null "))
+            {
+                while (resultSet.next())
+                {
                     String plate = resultSet.getString("plate");
                     Date end = resultSet.getDate("ins_date_end");
                     Vehicle vehicle = new Vehicle(plate, end);
                     list.add(vehicle);
                 }
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("Something went wrong!" + e.getMessage());
                 e.printStackTrace();
             }
             return list;
-        }*/
+        }
     }
 
 

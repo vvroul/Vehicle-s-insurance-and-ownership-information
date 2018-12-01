@@ -13,7 +13,7 @@ public class Menu
         static Scanner scanner = new Scanner(System.in);
         static int choice = 0;
         public static List<Vehicle> testVehicleList = new ArrayList<>();
-        public static List<Vehicle> testExpiredList = new ArrayList<>();
+        public static List<Vehicle> expiredList = new ArrayList<>();
 
         //Asks the user for the operation to be resolved
         public static void display()
