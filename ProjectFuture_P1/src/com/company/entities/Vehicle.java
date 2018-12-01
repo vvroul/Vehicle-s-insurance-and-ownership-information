@@ -68,7 +68,6 @@ public class Vehicle implements Comparable<Vehicle>
     //Checks the insurance status of the given date
     public boolean ExpirationCheck(Date dateToCheck)
     {
-        System.out.println("Going for the check");
         Date now = new Date();
 
         if (ins_end == null)

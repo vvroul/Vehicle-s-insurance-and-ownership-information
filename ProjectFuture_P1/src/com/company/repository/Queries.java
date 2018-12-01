@@ -63,16 +63,11 @@ public class Queries
                 while(resultSet.next())
                 {
                     Date exp_date = resultSet.getDate("ins_date_end");
-                    if(exp_date==null)
-                    {
-                        System.out.println("The vehicle has no insurance");
-                    }
                     String thePlate = resultSet.getString("plate");
                     Vehicle testVehicle = new Vehicle(thePlate, exp_date);
                     if (testVehicle.ExpirationCheck(dateToBeChecked))
                     {
                         Menu.MenuMethods.goingToExpireList.add(testVehicle);
-                        System.out.println("The vehicle with plate : " + thePlate + " is about to have expired insurance.");
                     }
                 }
             }

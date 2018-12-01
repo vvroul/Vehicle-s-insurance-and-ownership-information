@@ -48,7 +48,7 @@ public class Utils
             try
             {
                 PrintWriter writer = new PrintWriter(fileName);
-                for (Vehicle aVehicle : Menu.MenuMethods.testVehicleList)
+                for (Vehicle aVehicle : Menu.MenuMethods.goingToExpireList)
                 {
                     writer.println(aVehicle.getPlate());
                 }
@@ -63,7 +63,7 @@ public class Utils
         //Export info to console
         public static void ExportToConsole()
         {
-            for (Vehicle aVehicle : Menu.MenuMethods.testVehicleList)
+            for (Vehicle aVehicle : Menu.MenuMethods.goingToExpireList)
             {
                 System.out.println(aVehicle.getPlate());
             }
