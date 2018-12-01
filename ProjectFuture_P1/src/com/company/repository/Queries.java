@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Collections;
 
 public class Queries
 {
@@ -82,37 +83,33 @@ public class Queries
             }
         }
 
-        public static void queryF3()
+        /*public static ArrayList<Vehicle> queryF3()
         {
-            String date="Sun Nov 25 12:53:10 EET 2018";
-            String[] samplePlate = { "JBC-1234", "SBA-1234", "FAC-1234", "-D234", "XBC-1234", "EBC-1234", "KBC-1234", "BBC-1234", "NBC-1234", "ABC-1234"};
-            //cycle through the vehicle result set
-            for (int i=0; i < 10; ++i)
-            {
-                try
-                {
-                    SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-                    Date expDate = sdf.parse(date);
-                    Vehicle testVehicle = new Vehicle(samplePlate[i], expDate);
-                    //for every vehicle, make the expiration check with the date now
-                    if (testVehicle.ExpirationCheck(new Date()))
-                    {
-                        //if true add it to the expiredList
-                        Menu.MenuMethods.testExpiredList.add(testVehicle);
-                    }
-                }
-                catch (java.text.ParseException e)
-                {
-                    e.printStackTrace();
-                }
+            if (connection == null) {
+                System.out.println("There's no connection to a database");
+                return null;
             }
 
-            Menu.MenuMethods.testExpiredList.sort(Vehicle::compareTo);
-            for (Vehicle v : Menu.MenuMethods.testExpiredList)
-            {
-                System.out.println(v.getPlate());
+            ArrayList<Vehicle> list = new ArrayList<>();
+            Date now = new Date();
+            DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            String nowSql = formatter.format(now);
+
+            try (Statement statement = connection.createStatement();
+                 ResultSet resultSet = statement.executeQuery("select plate, ins_date_end from vehicle where " +
+                         "'" + nowSql + "' > ins_date_end or ins_date_end is null ")) {
+                while (resultSet.next()) {
+                    String plate = resultSet.getString("plate");
+                    Date end = resultSet.getDate("ins_date_end");
+                    Vehicle vehicle = new Vehicle(plate, end);
+                    list.add(vehicle);
+                }
+            } catch (SQLException e) {
+                System.out.println("Something went wrong!" + e.getMessage());
+                e.printStackTrace();
             }
-        }
+            return list;
+        }*/
     }
 
 

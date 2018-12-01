@@ -36,12 +36,20 @@ public class Operations
         ConnectionSql.ConnectionMethods.close();
     }
 
-    public static void F3Operation()
+    /*public static void F3Operation()
     {
-        ConnectionSql.ConnectionMethods.open();
-        Queries.QueriesMethods.queryF3();
-        ConnectionSql.ConnectionMethods.close();
-    }
+        ConnectionSql.open();
+        Utils.Menu.ExpiredList = ConnectionSql.queryF3();
+        Utils.Menu.ExpiredList.sort(Vehicle::compareTo);
+        for (Vehicle v : Utils.Menu.ExpiredList) {
+            if (v.getIns_end()==null){
+                System.out.println(v.getPlate() + " was never insured");
+            }else{
+                System.out.println(v.getPlate() + " date expired at " +v.getIns_end());
+            }
+        }
+        ConnectionSql.close();
+    }*/
 
     public static void F4Operation()
     {
