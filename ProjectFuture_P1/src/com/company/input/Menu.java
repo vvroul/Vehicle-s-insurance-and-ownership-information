@@ -14,6 +14,7 @@ public class Menu
         static int choice = 0;
         public static List<Vehicle> goingToExpireList = new ArrayList<>();
         public static List<Vehicle> expiredList = new ArrayList<>();
+        public static int totalFine;
 
         //Asks the user for the operation to be resolved
         public static void display()
@@ -43,7 +44,7 @@ public class Menu
                         Operations.F3Operation();
                         break;
                     case 4:
-                        //Operations.F4Operation();
+                        Operations.F4Operation();
                         break;
                     default:
                         break;

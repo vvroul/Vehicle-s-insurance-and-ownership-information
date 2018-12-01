@@ -14,7 +14,7 @@ public class Queries
     public static class QueriesMethods
     {
         //Query that returns the insurance status of a given query
-        public static void queryPlate(String input)
+        public static void queryF1(String input)
         {
             if(ConnectionSql.ConnectionMethods.connection==null)
             {
@@ -108,7 +108,59 @@ public class Queries
             }
             return list;
         }
+
+        public static int queryF4(int owner_id)
+        {
+            if (ConnectionSql.ConnectionMethods.connection == null)
+            {
+                System.err.println("There's no connection to a database");
+            }
+            try (Statement statement = ConnectionSql.ConnectionMethods.connection.createStatement();
+                 ResultSet resultSet = statement.executeQuery("SELECT o.first_name, o.last_name, v.plate, v.ins_date_end " +
+                         "from owner o " +
+                         "inner join vehicle v on o.id = v.owner_id " +
+                         "where o.id = " + "'" + owner_id + "'")) {
+                int uninsuredVehicles = 0;
+                String[] fullName = new String[2];
+                while (resultSet.next())
+                {
+                    Date exp_date = resultSet.getDate("ins_date_end");
+                    String thePlate = resultSet.getString("plate");
+                    fullName[0] = resultSet.getString("first_name");
+                    fullName[1] = resultSet.getString("last_name");
+                    if (exp_date == null)
+                    {
+                        ++uninsuredVehicles;
+                        continue;
+                    }
+
+                    if (exp_date.compareTo(new Date()) < 0)
+                    {
+                        ++uninsuredVehicles;
+                    }
+                }
+                if (uninsuredVehicles != 0)
+                {
+                    System.out.println("|-------------------------------------------------------------------|");
+                    System.out.println("|\tGive desirable fine for total fine calculation\t\t\t\t\t| ");
+                    System.out.println("|-------------------------------------------------------------------|");
+                    Scanner fineScanner = new Scanner(System.in);
+                    int finePrice = fineScanner.nextInt();
+                    int total_fine = finePrice * uninsuredVehicles;
+                    return total_fine;
+                }
+                else
+                {
+                    System.out.println(fullName[1] + " " + fullName[0] + " has all vehicles insured.");
+                    return 0;
+                }
+            }
+            catch (SQLException e)
+            {
+                System.out.println("Something went wrong!" + e.getMessage());
+                e.printStackTrace();
+            }
+            return -1;
+        }
     }
-
-
 }

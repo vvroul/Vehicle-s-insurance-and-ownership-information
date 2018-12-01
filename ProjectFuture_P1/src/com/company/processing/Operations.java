@@ -16,7 +16,7 @@ public class Operations
     {
         ConnectionSql.ConnectionMethods.open();
         String input = Validations.ValidationMethods.validatePlate();
-        Queries.QueriesMethods.queryPlate(input);
+        Queries.QueriesMethods.queryF1(input);
         ConnectionSql.ConnectionMethods.close();
     }
 
@@ -57,6 +57,14 @@ public class Operations
 
     public static void F4Operation()
     {
-
+        ConnectionSql.ConnectionMethods.open();
+        System.out.println("|-------------------------------------------------------------------|\n" +
+                "|\tGive desirable owner id for total fine calculation\t\t\t\t| \n" +
+                "|-------------------------------------------------------------------|");
+        Scanner idScanner = new Scanner(System.in);
+        int owner_id = idScanner.nextInt();
+        Menu.MenuMethods.totalFine = Queries.QueriesMethods.queryF4(owner_id);
+        System.out.println("Total fine for this user is : " + Menu.MenuMethods.totalFine);
+        ConnectionSql.ConnectionMethods.close();
     }
 }
