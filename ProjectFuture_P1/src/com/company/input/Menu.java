@@ -25,7 +25,7 @@ public class Menu
                 System.out.println("|-----------------------------------|");
                 System.out.println("|\t1. Vehicle Insurance Status \t|");
                 System.out.println("|\t2. Forecoming Expires\t\t\t|");
-                System.out.println("|\t3. Expires by plate\t\t\t|");
+                System.out.println("|\t3. Expires by plate\t\t\t\t|");
                 System.out.println("|\t4. Total Fine\t\t\t\t\t|");
                 System.out.println("|\t5. Quit\t\t\t\t\t\t\t|");
                 System.out.println("|-----------------------------------|");
