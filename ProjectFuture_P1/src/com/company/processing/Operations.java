@@ -38,34 +38,9 @@ public class Operations
 
     public static void F3Operation()
     {
-        String date="Sun Nov 25 12:53:10 EET 2018";
-        String[] samplePlate = { "JBC-1234", "SBA-1234", "FAC-1234", "-D234", "XBC-1234", "EBC-1234", "KBC-1234", "BBC-1234", "NBC-1234", "ABC-1234"};
-        //cycle through the vehicle result set
-        for (int i=0; i < 10; ++i)
-        {
-            try
-            {
-                SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-                Date expDate = sdf.parse(date);
-                Vehicle testVehicle = new Vehicle(samplePlate[i], expDate);
-                //for every vehicle, make the expiration check with the date now
-                if (testVehicle.ExpirationCheck(new Date()))
-                {
-                    //if true add it to the expiredList
-                    Menu.MenuMethods.testExpiredList.add(testVehicle);
-                }
-            }
-            catch (java.text.ParseException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        Menu.MenuMethods.testExpiredList.sort(Vehicle::compareTo);
-        for (Vehicle v : Menu.MenuMethods.testExpiredList)
-        {
-            System.out.println(v.getPlate());
-        }
+        ConnectionSql.ConnectionMethods.open();
+        Queries.QueriesMethods.queryF3();
+        ConnectionSql.ConnectionMethods.close();
     }
 
     public static void F4Operation()
